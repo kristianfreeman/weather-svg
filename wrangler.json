@@ -16,5 +16,8 @@
       "binding": "WEATHER_CACHE",
       "id": "a7dde5d1c22b4c248ae136c79fcb8775"
     }
-  ]
+  ],
+  "triggers": {
+    "crons": ["0 */6 * * *"]
+  }
 }
