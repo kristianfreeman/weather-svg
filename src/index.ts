@@ -229,7 +229,10 @@ export default {
     const height = parseInt(url.searchParams.get('height') ?? String(CONFIG.DEFAULT_DIMENSIONS.height));
     const vKey = url.searchParams.get('v');
 
-    if (!zipCode) return new Response('Missing zip code', { status: 400 });
+    //if (!zipCode) return new Response('Missing zip code', { status: 400 });
+    if (!zipCode) {
+      throw new Error('Missing zip code');
+    }
 
     const cacheKey = generateCacheKey(zipCode, issueDate, vKey);
     const cachedData = await env.WEATHER_CACHE.get(cacheKey, 'json') as any;
@@ -272,5 +275,5 @@ export default {
     } catch (error: any) {
       return new Response(`Error: ${error.message}`, { status: 500 });
     }
-  }
+  },
 };
